@@ -13,6 +13,7 @@ import com.ict.model.Bye;
 import com.ict.model.Command;
 import com.ict.model.Hello;
 import com.ict.model.Hi;
+import com.ict.model.grades;
 
 
 @WebServlet("/MyController")
@@ -37,6 +38,7 @@ public class MyController extends HttpServlet
 		String path = null;
 		Command comm = null;
 		
+		
 		if (cmd.equalsIgnoreCase("hello")) 
 		{
 			comm = new Hello(); 
@@ -46,37 +48,16 @@ public class MyController extends HttpServlet
 		}else if (cmd.equalsIgnoreCase("bye"))
 		{
 			comm = new Bye();
+		}else if (cmd.equalsIgnoreCase("grades"))
+		{
+			comm = new grades();
 		}
 		path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
 		
-		String name = request.getParameter("name");
-		String kor = request.getParameter("kor");
-		String eng = request.getParameter("eng");
-		String math = request.getParameter("math");
 		
-		int sum = Integer.getInteger("kor")+Integer.getInteger("eng")
-				+Integer.getInteger("math");
-		int avg = sum/3;
-		String hak = "";
-		if (avg>=90) 
-		{
-			hak = "A";
-		}else if(avg>=80)
-		{
-			hak = "B";
-		}else if(avg>=70)
-		{
-			hak = "C";
-		}else
-		{
-			hak = "F";
-		}
 		
-		request.getRequestDispatcher(name).forward(request, response);
-		request.getRequestDispatcher(Integer.toString(sum)).forward(request, response);
-		request.getRequestDispatcher(Integer.toString(avg)).forward(request, response);
-		request.getRequestDispatcher(hak).forward(request, response);
+		
 		
 	}
 

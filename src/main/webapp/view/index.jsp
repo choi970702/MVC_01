@@ -78,6 +78,7 @@
             <tr><td>수학 </td><td><input type="number" name="math" required></td> </tr>
          </tbody>
          <tfoot>
+         	<input type="hidden" name="cmd" value="grades">
             <tr><td colspan="2"><input type="submit" value="성적확인"></td></tr>
          </tfoot>
       </table>
